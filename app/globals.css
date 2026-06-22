@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root{
+  --background:#FFF8EE;
+  --foreground:#1F1A17;
+
+  --primary:#7A1F3D;
+  --gold:#C8A951;
+  --green:#2F6B55;
+
+  --radius:22px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:var(--background);
+  color:var(--foreground);
+  font-family:var(--font-body),sans-serif;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--font-heading),serif;
+}
+
+.script{
+  font-family:var(--font-script),cursive;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button{
+  font:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+@keyframes zoomHero {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+@keyframes shine {
+  from {
+    transform: translateX(-150%);
+  }
+
+  to {
+    transform: translateX(250%);
+  }
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.7),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  animation: shine 3s linear infinite;
+}
