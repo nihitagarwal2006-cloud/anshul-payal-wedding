@@ -31,7 +31,7 @@ export default function MusicPlayer() {
   return (
     <audio
       ref={audioRef}
-      src="/music/wedding.mp3"
+      src="/assets/music/wedding.mp3"
       loop
       preload="auto"
     />
