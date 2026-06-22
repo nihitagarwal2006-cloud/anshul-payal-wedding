@@ -2,30 +2,23 @@
 
 import { useEffect, useRef } from "react";
 
+let audio: HTMLAudioElement | null = null;
+
+export function playWeddingMusic() {
+  if (!audio) return;
+
+  audio.volume = 0.4;
+
+  audio.play().catch((err) => {
+    console.log("Music blocked:", err);
+  });
+}
+
 export default function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    let started = false;
-
-    const playMusic = async () => {
-      if (started || !audioRef.current) return;
-
-      started = true;
-
-      try {
-        audioRef.current.volume = 0.4;
-        await audioRef.current.play();
-      } catch (e) {
-        started = false;
-      }
-    };
-
-    window.addEventListener("pointerdown", playMusic, { once: true });
-
-    return () => {
-      window.removeEventListener("pointerdown", playMusic);
-    };
+    audio = audioRef.current;
   }, []);
 
   return (

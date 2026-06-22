@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 import GuestModal from "@/components/ui/GuestModal";
+import MusicPlayer, { playWeddingMusic } from "@/components/MusicPlayer";
 
 import HeroTitle from "./HeroTitle";
 import HeroSubtitle from "./HeroSubtitle";
@@ -28,6 +29,9 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+      {/* Background Music */}
+      <MusicPlayer />
 
       <div className="absolute inset-0 bg-black/35" />
 
@@ -55,7 +59,12 @@ export default function Hero() {
         </div>
 
         <div className="mt-10">
-          <EnterButton onClick={() => setOpenModal(true)} />
+          <EnterButton
+            onClick={() => {
+              playWeddingMusic();
+              setOpenModal(true);
+            }}
+          />
         </div>
       </motion.div>
 
